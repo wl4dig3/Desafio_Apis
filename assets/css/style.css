@@ -20,14 +20,20 @@ body {
 }
 .btn {
     margin-top: 1rem;
-    padding: 0.5rem 3rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 5rem;
     border-radius: 10px;
     background-color: chartreuse;
     cursor: pointer;
 }
 select {
-    padding: 0.3rem 4.9rem;
+    padding: 0.3rem;
 }
 h1 ,h3, p {
     color: white;
+}
+.input-monto, .select {
+    width: 13rem;
+    height: 1.7rem;
+    border-radius: 5px;
 }

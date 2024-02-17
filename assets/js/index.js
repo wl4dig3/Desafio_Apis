@@ -1,32 +1,44 @@
-const mostrar = document.querySelector("#mostrar")
-// async function getDataUser() {
+function converter() {
+  fetch("https://mindicador.cl/api/")
+    .then((resp) => resp.json())
+    .then((data) => {
+      const { dolar, euro, bitcoin, uf, utm, ivp } = data;
 
-//     const res = await fetch("https://mocki.io/v1/f360b0a6-1a00-4614-b250-c70bec083fb0");
-//     const data = await  res.json();
-//     const { email, id } = data.results[0];
-//     mostrar.innerHTML = `Tu email es: ${email} y el id es ${id.name}`
-// }
-// getDataUser();
+      const $ = document;
+      let moneda = $.getElementById("seleccion-moneda").value;
+      console.log("moneda", moneda);
+      let obtenerMonto = parseFloat($.getElementById("input-monto").value);
+      console.log("monto", obtenerMonto);
 
-// async function getTask() {
-//     try {
-//         const res = await fetch("https://mocki.io/v1/0b765f00-0010-4b79-8cea-451ced12b339");
-//         const data = await res.json();
-//         console.log(data);
-//         const { task }  = data.data;
-//         console.log(task[0].title);
-//     } catch (error) {
-//         console.log('ocurrió un error ', error);
-//     }
-// };
-// getTask();
+      $.getElementById("btnBuscar").addEventListener("click", converter);
+      let resultado;
 
-
-// async function getCity() {
-//     try {
-//         const resp = await fetch("https://openweathermap.org/=${apiKey}");
-//         const data = resp.json();
-//     } catch (error) {
-        
-//     }
-// }
+      switch (moneda) {
+        case "bitcoin":
+          resultado = obtenerMonto / bitcoin.valor;
+          break;
+        case "dolar":
+          resultado = obtenerMonto / dolar.valor;
+          break;
+        case "euros":
+          resultado = obtenerMonto / euro.valor;
+          break;
+        case "uf":
+          resultado = obtenerMonto / uf.valor;
+          break;
+        case "utm":
+          resultado = obtenerMonto / utm.valor;
+          break;
+        case "ivp":
+          resultado = obtenerMonto / ivp.valor;
+          break;
+        default:
+          resultado = "favor ingresa algo";
+          break;
+      }
+      $.getElementById("resultado").textContent = resultado.toFixed(4);
+      $.getElementById("resultado").style.color = "white"
+    })
+    .catch((error) => console.error("Error en la api", error));
+}
+converter();

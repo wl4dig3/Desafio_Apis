@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dezafio 5 Apis</title>
+    <title>Desafio 5 Apis</title>
     <script defer src="./assets/js/index.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -13,12 +13,21 @@
     <section class="container-inputs">
         <div id="mostrar">
             <h3>Pesos CLP</h3>
-            <input inputmode="ingresar-monto" type="text" placeholder="Ingrese el monto en CLP">
+            <input id="input-monto" class="input-monto" inputmode="ingresar-monto" type="text" placeholder="Ingrese el monto en CLP">
             <p>Moneda a convertir</p>
-            <select name="Seleccione moneda" id="seleccion-moeda"></select>
+            <select class="select" name="Seleccione moneda" id="seleccion-moneda">
+                <option value="">Selecciona un valor</option>
+                <option value="uf">UF</option>
+                <option value="ivp">IVP</option>
+                <option value="euros">Euros</option>
+                <option value="dolar">Dólar</option>
+                <option value="bitcoin">Bitcoin</option>
+                <option value="utm">Utm</option>
+            </select>
             <div id="task">
                 <button class="btn" id="btnBuscar">Buscar</button>
             </div>
+            <div id="resultado"></div>
         </div>
 
     </section>
