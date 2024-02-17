@@ -1,7 +1,7 @@
 async function  converter() {
-  
+  const endPoint = "https://mindicador.cl/api/"
   try {
-    const resp = await fetch("https://mindicador.cl/api/");
+    const resp = await fetch(endPoint);
     const data = await resp.json();
     const { dolar, euro, bitcoin, uf, utm, ivp } = data;
 
@@ -37,7 +37,7 @@ async function  converter() {
         resultado = "favor ingresa algo";
         break;
     }
-    $.getElementById("resultado").textContent = resultado.toFixed(4);
+    $.getElementById("resultado").textContent = `Resultado $: ${resultado.toFixed(4)}`;
     $.getElementById("resultado").style.color = "white"
   }catch (error) {
      console.error("Error en la api", error);
